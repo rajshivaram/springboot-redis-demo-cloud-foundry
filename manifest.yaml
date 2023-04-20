@@ -1,0 +1,13 @@
+---
+applications:
+- name: testapp-redis-raj
+  memory: 2048M
+  instances: 1
+  random-route: true
+  path: target/redis-0.0.1-SNAPSHOT.jar
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack/releases/download/v4.42/java-buildpack-v4.42.zip
+  env:
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+  services:
+  - raj-redis-cluster
